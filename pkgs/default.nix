@@ -2,7 +2,6 @@
 
 with pkgs; rec {
   # my programs/libraries
-  dont-repeat-yourself = callPackage ./dont-repeat-yourself { };
   i3lock-blurred = callPackage ./i3lock-blurred { };
 
   # programs/libraries by other people
