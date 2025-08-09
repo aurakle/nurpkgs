@@ -1,18 +1,19 @@
 {
-  description = "My personal NUR repository";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    clickrtraining.url = "github:enjarai/clickrtraining";
+    clickrtraining.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs }:
-    let
-      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-    in
-    {
-      legacyPackages = forAllSystems (system: import ./default.nix {
-        pkgs = import nixpkgs { inherit system; };
-      });
-      packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
-    };
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        legacyPackages = import ./default.nix { inherit inputs pkgs; };
+        packages = nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system};
+      }
+    );
 }
