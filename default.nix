@@ -6,11 +6,11 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ inputs, pkgs }:
+{ pkgs ? import <nixpkgs> { } }:
 
 {
   # The `lib`, `modules`, and `overlays` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
-} // import ./pkgs { inherit inputs pkgs; }
+} // import ./pkgs { inherit pkgs; }

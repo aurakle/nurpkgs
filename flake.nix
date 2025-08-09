@@ -11,9 +11,12 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        fromInput = input: inputs.${input}.packages.${system}.default;
       in {
-        legacyPackages = import ./default.nix { inherit inputs pkgs; };
         packages = nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system};
+        legacyPackages = {
+          clickrtraining = fromInput "clickrtraining";
+        } // (import ./default.nix { inherit inputs pkgs; });
       }
     );
 }
