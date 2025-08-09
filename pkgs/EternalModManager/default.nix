@@ -37,8 +37,7 @@ rustPlatform.buildRustPackage rec {
     libadwaita
   ];
 
-  cargoLock.lockFile = "${src}/Cargo.lock";
-  doCheck = false;
+  cargoHash = "sha256-F3RCyrsIWXOc2nd7J4ShM0s9qtzL/s6D9jLn8scE0NA=";
 
   meta = with lib; {
     homepage = "https://github.com/brunoanc/EternalModManager";
