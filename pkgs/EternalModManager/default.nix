@@ -2,7 +2,7 @@
 , fetchFromGitHub
 , rustPlatform
 , pkg-config
-, wrapGAppsHook
+, wrapGAppsHook3
 , glib
 , gtk4
 , openssl
@@ -24,7 +24,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [
     pkg-config
-    wrapGAppsHook
+    wrapGAppsHook3
   ];
 
   buildInputs = [
