@@ -9,6 +9,7 @@ with pkgs; rec {
   # programs/libraries by other people
   i3-video-wallpaper = callPackage ./i3-video-wallpaper { };
   trim-generations = callPackage ./trim-generations { };
+  aonsoku = callPackage ./aonsoku { };
 
   # games
   bar = callPackage ./bar { };
