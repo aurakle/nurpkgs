@@ -1,18 +1,17 @@
 { stdenv
 , lib
 , fetchFromGitHub
-, home-manager
-, nano }:
+, home-manager }:
 
 stdenv.mkDerivation rec {
   pname = "easy-nixos";
-  version = "1.5";
+  version = "2.0";
 
   src = fetchFromGitHub {
-    owner = "StellarWitch7";
+    owner = "aurakle";
     repo = "easy-nixos";
     rev = "v${version}";
-    sha256 = "sha256-po0wcJ6FVHemAOysvbcEr37bIVV4jGxl6dLbc854eDI=";
+    sha256 = "sha256-GDoYPGd+3f0FPuJK/2bWqyjTfUQ28mRQBYcEIf9yzig=";
   };
 
   installPhase = ''
@@ -24,11 +23,10 @@ stdenv.mkDerivation rec {
 
   runtimeDeps = [
     home-manager
-    nano
   ];
 
   meta = with lib; {
-    homepage = "https://github.com/StellarWitch7/easy-nixos";
+    homepage = "https://github.com/aurakle/easy-nixos";
     description = "Wrapper and helper scripts to ease management of a NixOS system";
     license = licenses.mit;
   };
