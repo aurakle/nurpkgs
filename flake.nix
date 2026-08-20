@@ -3,8 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    clickrtraining.url = "github:enjarai/clickrtraining";
-    clickrtraining.inputs.nixpkgs.follows = "nixpkgs";
+    clickr.url = "git+https://codeberg.org/trans-fish/clickr.git";
+    clickr.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -15,7 +15,7 @@
       in {
         packages = nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system};
         legacyPackages = {
-          clickrtraining = fromInput "clickrtraining";
+          clickr = fromInput "clickr";
         } // (import ./default.nix { inherit pkgs; });
       }
     );
