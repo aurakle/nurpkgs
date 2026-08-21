@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787185847,
-        "narHash": "sha256-K3wHxMXCHhF2xHX1qmuCJzP5K0gh7p3WcUQe3jrw3Dw=",
+        "lastModified": 1787271822,
+        "narHash": "sha256-PfspkaEP/4qSB+G0a1Ad9LMHYaeUh+rkhOEygf9Egzw=",
         "ref": "refs/heads/mistress",
-        "rev": "ffc671ca1e48e92af4649e54e0a9f8d31325ec3c",
-        "revCount": 63,
+        "rev": "a7a56157b4b8a84c31413361b4e79d55f2f4f1e1",
+        "revCount": 66,
         "type": "git",
         "url": "https://codeberg.org/trans-fish/clickr.git"
       },
